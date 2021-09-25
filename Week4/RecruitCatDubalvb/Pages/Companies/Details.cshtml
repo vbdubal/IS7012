@@ -73,6 +73,48 @@
         </dd>
     </dl>
 </div>
+
+<div>
+    @if (Model.Company.Candidates == null || Model.Company.Candidates.Count == 0)
+    {
+        <div >
+            <h4><i>Null Candidate<i></i></h4>
+            <p>Currently there is no candidate in the company</p>
+        </div>
+    }
+    else
+    {
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Candidate First Name</th>
+                    <th>Candidate Last Name</th>
+                    <th>Job Title</th>
+                    <th>Industry</th>
+                    <th>Company</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c2 in Model.Company.Candidates)
+                {
+                <tr>
+                    <td>@c2.FirstName</td>
+                    <td>@c2.LastName</td>
+                    <td>@c2.JobTitle.Title</td>
+                    <td>@c2.Industry.Name</td>
+                    <td>@c2.Company.Name</td>
+
+                    <td><a href="/Candidates/Details?id=@c2.Id">Details</a>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Company.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>

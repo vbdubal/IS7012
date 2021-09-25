@@ -61,17 +61,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.WorkExperience)
             </td>
+            
+            <td class="text-center">
+                @if (item.ReadyToRelocate == true)
+                {
+                    <span class="alert-warning">Yes</span>
+                }
+                else
+                {
+                    <span class="alert-secondary">No</span>
+                }
+                </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.ReadyToRelocate)
+                @Html.DisplayFor(modelItem => item.Company.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Company.Id)
+                @Html.DisplayFor(modelItem => item.JobTitle.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.JobTitle.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Industry.ID)
+                @Html.DisplayFor(modelItem => item.Industry.Name)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
